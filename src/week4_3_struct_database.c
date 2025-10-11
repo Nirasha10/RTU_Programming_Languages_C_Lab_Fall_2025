@@ -1,8 +1,8 @@
 
 /*
  * week4_3_struct_database.c
- * Author: [Your Name]
- * Student ID: [Your ID]
+ * Author: Dewapurage Nirasha Prabashi
+ * Student ID: 243AEB014
  * Description:
  *   Simple in-memory "database" using an array of structs.
  *   Students will use malloc to allocate space for multiple Student records,
