@@ -28,8 +28,13 @@ int main(void) {
     const char *filename = "student.txt";
 
     // TODO: Call save_student() to save student data to file
+    save_student(s1, filename);
+    
     // TODO: Call load_student() to read data back into a new struct
+    Student s2 = load_student(filename);
+    
     // TODO: Print loaded data to confirm correctness
+    printf("Loaded student: %s, %d, GPA %.2f\n", s2.name, s2.age, s2.gpa);
 
     return 0;
 }
@@ -37,13 +42,29 @@ int main(void) {
 // TODO: Implement save_student()
 // Open file for writing, check errors, write fields, then close file
 void save_student(Student s, const char *filename) {
-    // ...
+    FILE *fp = fopen(filename, "w");
+    if (fp == NULL) {
+        printf("Error opening file for saving!\n");
+        return;
+    }
+    
+    fprintf(fp, "%s %d %.2f", s.name, s.age, s.gpa);
+    fclose(fp);
+    printf("Saving student to file...\n");
 }
 
 // TODO: Implement load_student()
 // Open file for reading, check errors, read fields, then close file
 Student load_student(const char *filename) {
     Student s;
-    // ...
+    FILE *fp = fopen(filename, "r");
+    if (fp == NULL) {
+        printf("Error opening file for loading!\n");
+        return s;
+    }
+    
+    fscanf(fp, "%s %d %f", s.name, &s.age, &s.gpa);
+    fclose(fp);
+    printf("Loading student from file...\n");
     return s;
 }
